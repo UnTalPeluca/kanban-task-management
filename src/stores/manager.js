@@ -19,10 +19,9 @@ export const useManagerStore = defineStore({
     sidebar: false,
     overlay: false,
     dragging: false,
+    darkmode: false,
   }),
-  getters: {
-
-  },
+  getters: {},
   actions: {
     hideOverlay() {
       this.overlay = false;

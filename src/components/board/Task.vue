@@ -1,6 +1,6 @@
 <template>
-  <article class="group flex flex-col bg-white p-4 rounded-lg cursor-pointer shadow-task">
-    <h3 class="text-black font-bold group-hover:text-main-purple select-none">{{ task.title }}</h3>
+  <article class="group flex flex-col bg-white dark:bg-dark-grey p-4 rounded-lg cursor-pointer shadow-task">
+    <h3 class="text-black dark:text-white font-bold group-hover:text-main-purple select-none">{{ task.title }}</h3>
     <p class="text-xs text-medium-grey font-bold select-none">{{ subtasksCompleted }} substasks</p>
   </article>
 </template>

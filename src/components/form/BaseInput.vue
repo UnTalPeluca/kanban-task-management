@@ -1,10 +1,10 @@
 <template>
   <div class="text-white relative flex flex-col gap-2 w-full">
-    <label v-if="inputName" :for="inputName" class="text-medium-grey text-xs font-bold">
+    <label v-if="inputName" :for="inputName" class="text-medium-grey dark:text-white text-xs font-bold">
       {{ inputName }}
     </label>
     <input :id="inputName"
-      class="px-4 py-2 text-black text-sm rounded transition-colors outline outline-1 outline-medium-grey/25 placeholder:text-black/25"
+      class="px-4 py-2 text-black dark:text-white dark:bg-dark-grey text-sm rounded transition-colors outline outline-1 outline-medium-grey/25 cursor-pointer hover:outline-main-purple focus:outline-main-purple placeholder:text-black/25 dark:placeholder:text-white/25"
       :value="modelValue" @input="$emit('update:modelValue', $event.target.value)" v-bind="$attrs" />
   </div>
 </template>

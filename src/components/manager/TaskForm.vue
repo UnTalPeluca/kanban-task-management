@@ -1,8 +1,8 @@
 <template>
-  <div class="bg-white rounded-lg p-1">
+  <div class="bg-white dark:bg-dark-grey rounded-lg p-1">
     <div class="p-5 pr-3 flex flex-col gap-6 max-h-[90vh] overflow-y-scroll">
       <div class="flex justify-between items-center">
-        <h4 class="text-black font-bold text-lg">{{ managerStore.taskForm.edit ? 'Edit Task' : 'Add New Task' }}</h4>
+        <h4 class="text-black dark:text-white font-bold text-lg">{{ managerStore.taskForm.edit ? 'Edit Task' : 'Add New Task' }}</h4>
       </div>
       <BaseInput v-model="form.task.title" inputName="Title" placeholder="e.g. Take coffee break" />
       <BaseTextarea v-model="form.task.description" inputName="Description"

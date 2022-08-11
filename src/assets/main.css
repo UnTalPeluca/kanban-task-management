@@ -21,9 +21,9 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 0.94rem;
 }
 #app {
-
   display: flex;
   flex-direction: column;
 }
@@ -48,4 +48,16 @@ body {
   background-color: #635fc7;
   border-radius: 10px;
   border: 3px solid #ffffff;
+}
+.dark * {
+  scrollbar-width: auto;
+  scrollbar-color: #635fc7 #2b2c37;
+}
+.dark *::-webkit-scrollbar-track {
+  background: #2b2c37;
+}
+.dark *::-webkit-scrollbar-thumb {
+  background-color: #635fc7;
+  border-radius: 10px;
+  border: 3px solid #2b2c37;
 }

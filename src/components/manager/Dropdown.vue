@@ -2,7 +2,7 @@
   <div tabindex="1" class="group cursor-pointer relative">
     <IconVerticalEllipsis />
     <div class="absolute right-28 top-8 hidden group-focus:block">
-      <div class="bg-white rounded-lg text-sm p-4 w-36 flex flex-col gap-4 fixed z-10">
+      <div class="bg-white dark:bg-very-dark-grey rounded-lg text-sm p-4 w-36 flex flex-col gap-4 fixed z-10">
         <p @click="emit('onClickEdit', target)" class="text-medium-grey text-xs font-bold">Edit {{ target }}</p>
         <p @click="emit('onClickDelete', target)" class="text-red text-xs font-bold">Delete {{ target }}</p>
       </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white rounded-lg">
+  <div class="bg-white dark:bg-dark-grey rounded-lg">
     <div class="p-6 flex flex-col gap-6">
       <div class="flex justify-between items-center">
         <h4 class="text-red font-bold text-lg">Delete this {{ managerStore.delete.board ? 'board' : 'task' }}</h4>

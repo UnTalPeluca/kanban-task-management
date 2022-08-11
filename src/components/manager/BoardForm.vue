@@ -1,12 +1,14 @@
 <template>
-  <div class="bg-white rounded-lg p-1">
+  <div class="bg-white dark:bg-dark-grey rounded-lg p-1">
     <div class="p-5 pr-3 flex flex-col gap-6 max-h-[90vh] overflow-y-scroll">
       <div class="flex justify-between items-center">
-        <h4 class="text-black font-bold text-lg">{{ managerStore.boardForm.edit ? 'Edit Board' : 'Add New Board' }}</h4>
+        <h4 class="text-black dark:text-white font-bold text-lg">
+          {{ managerStore.boardForm.edit ? 'Edit Board' : 'Add New Board' }}
+        </h4>
       </div>
       <BaseInput v-model="board.name" inputName="Board Name" placeholder="e.g. Web Design" />
       <div class="flex flex-col gap-3">
-        <p class="text-medium-grey text-xs font-bold">Board Columns</p>
+        <p class="text-medium-grey dark:text-white text-xs font-bold">Board Columns</p>
         <div class="flex items-center justify-between gap-4" v-for="(column, index) in board.columns" :key="index">
           <BaseInput v-model="column.name"
             :placeholder="columnsPlaceholders[index] ? columnsPlaceholders[index] : 'Your Column title...'" />

@@ -1,13 +1,11 @@
 <template>
-  <header class="bg-white top-0 left-0 w-full">
-    <HeaderVue />
-  </header>
+  <HeaderVue />
   <main>
     <div class="flex min-w-full">
       <SideBar />
       <div v-dragscroll:nochilddrag
-        class="w-full relative h-full  min-h-[calc(100vh-64px)] max-h-[calc(100vh-64px)] overflow-auto bg-light-grey ">
-        <div data-dragscroll class="mx-auto max-w-sm w-11/12 pt-4 pb-24">
+        class="w-full relative h-full  min-h-[calc(100vh-64px)] max-h-[calc(100vh-64px)] overflow-auto bg-light-grey dark:bg-very-dark-grey">
+        <div data-dragscroll class="mx-auto max-w-sm w-11/12 pt-6 pb-24">
           <Board data-dragscroll v-if="boardsStore.getColumns" />
           <div v-else-if="!boardsStore.boards"></div>
           <EmptyBoard v-else />
@@ -24,7 +22,7 @@
   </div>
 </template >
   
-    <script setup>
+<script setup>
 import EmptyBoard from './components/board/Empty.vue';
 import Board from './components/board/Board.vue'
 import HeaderVue from './components/Header.vue';
@@ -39,7 +37,6 @@ import { useBoardsStore } from '@/stores/boards.js';
 import { useManagerStore } from '@/stores/manager.js';
 import SideBar from './components/manager/Sidebar.vue';
 
-
 const boardsStore = useBoardsStore();
 const managerStore = useManagerStore();
 onMounted(async () => {
@@ -53,5 +50,23 @@ onMounted(async () => {
   } else {
     boardsStore.$state = JSON.parse(storageData)
   }
+
+  //DARK MODE
+  if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark')
+    localStorage.setItem('theme', 'dark')
+    managerStore.darkmode = true;
+  } else {
+    localStorage.setItem('theme', 'light')
+    managerStore.darkmode = false;
+  }
+  managerStore.$subscribe((mutations, state) => {
+    localStorage.setItem('theme', (state.darkmode ? 'dark' : 'light'))
+    if (state.darkmode) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  })
 }) 
 </script>
