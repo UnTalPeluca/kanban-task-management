@@ -8,7 +8,7 @@
           {{ column.name }} ( {{ column.tasks.length }} )
         </h2>
       </div>
-      <TransitionGroup tag="div" name="tasks" data-dragscroll class="flex flex-col gap-4">
+      <TransitionGroup tag="div" name="tasks" data-dragscroll class="flex flex-col gap-5">
         <BoardTask @click="onClickTask(columnIndex, taskIndex)" v-for="(task, taskIndex) in column?.tasks"
           :key="taskIndex" :task="task" />
       </TransitionGroup>

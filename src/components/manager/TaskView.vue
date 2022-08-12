@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-white dark:bg-dark-grey rounded-lg p-1" v-if="managerStore.taskView">
+  <div class="bg-white dark:bg-dark-grey rounded-lg p-1">
     <div class="p-5 pr-3 flex flex-col gap-6 max-h-[90vh] overflow-y-auto ">
-      <div class="flex justify-between items-center">
+      <div class="flex justify-between items-center gap-4">
         <h4 class="text-black dark:text-white font-bold text-lg">{{ boardsStore.getTask?.title }}</h4>
         <Dropdown @onClickEdit="editTask" @onClickDelete="deleteTask" target="Task" />
       </div>

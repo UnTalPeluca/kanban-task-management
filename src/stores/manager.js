@@ -17,6 +17,7 @@ export const useManagerStore = defineStore({
       board: false,
     },
     sidebar: false,
+    sidebarMobile: false,
     overlay: false,
     dragging: false,
     darkmode: false,
@@ -29,6 +30,7 @@ export const useManagerStore = defineStore({
       this.taskForm.visible = false;
       this.boardForm.visible = false;
       this.delete.visible = false;
+      this.sidebarMobile = false;
     },
   },
 });
