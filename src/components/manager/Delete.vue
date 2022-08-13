@@ -6,8 +6,8 @@
       </div>
       <p class="text-medium-grey text-sm">{{ warning }}</p>
       <div class="flex flex-col gap-4">
-        <ButtonDelete @click="onDelete">Delete</ButtonDelete>
-        <ButtonSecondaryLarge @click="onCancel">Cancel</ButtonSecondaryLarge>
+        <ButtonDelete @click.stop="onDelete">Delete</ButtonDelete>
+        <ButtonSecondaryLarge @click.stop="onCancel">Cancel</ButtonSecondaryLarge>
       </div>
     </div>
   </div>

@@ -1,12 +1,12 @@
 <template>
   <HeaderVue />
   <main>
-    <div class="flex w-full">
+    <div class="flex w-full ">
       <SideBar />
       <div v-dragscroll:nochilddrag
-        class="relative h-full w-screen min-h-[calc(100vh-64px)] max-h-[calc(100vh-64px)] overflow-auto bg-light-grey dark:bg-very-dark-grey transition-all"
+        class="relative h-full w-screen min-h-[calc(100vh-64px)] max-h-[calc(100vh-64px)] overflow-auto bg-light-grey dark:bg-very-dark-grey transition-all "
         :class="managerStore.sidebar ? ['sm:translate-x-[256px] lg:translate-x-[300px] max-w-[calc(100vw+256px'] : ['translate-x-[0]']">
-        <div data-dragscroll class="mx-auto w-11/12 pt-6 pb-24">
+        <div data-dragscroll class="mx-auto w-11/12 pt-6 pb-24 ">
           <Board data-dragscroll v-if="boardsStore.getColumns" />
           <div v-else-if="!boardsStore.boards"></div>
           <EmptyBoard v-else />

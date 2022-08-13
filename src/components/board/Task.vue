@@ -16,7 +16,7 @@ const props = defineProps({
 })
 
 const subtasksCompleted = computed(() => {
-  const completed = props.task.subtasks.filter((sub) => sub.isCompleted).length;
+    const completed = props.task.subtasks.filter((sub) => sub.isCompleted).length;
   const total = props.task.subtasks.length;
   return `${completed} of ${total}`
 })

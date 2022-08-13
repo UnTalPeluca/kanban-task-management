@@ -31,6 +31,7 @@ export const useManagerStore = defineStore({
       this.boardForm.visible = false;
       this.delete.visible = false;
       this.sidebarMobile = false;
+      this.sidebar = false;
     },
   },
 });

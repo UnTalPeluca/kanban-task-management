@@ -1,29 +1,29 @@
 <template>
-  <div class="bg-white dark:bg-dark-grey rounded-lg p-1">
+  <form @submit.prevent="onSubmit" class="bg-white dark:bg-dark-grey rounded-lg p-1">
     <div class="p-5 pr-3 flex flex-col gap-6 max-h-[90vh] overflow-y-scroll">
       <div class="flex justify-between items-center">
         <h4 class="text-black dark:text-white font-bold text-lg">
           {{ managerStore.boardForm.edit ? 'Edit Board' : 'Add New Board' }}
         </h4>
       </div>
-      <BaseInput v-model="board.name" inputName="Board Name" placeholder="e.g. Web Design" />
+      <BaseInput ref="inputTitle" v-model="board.name" inputName="Board Name" placeholder="e.g. Web Design" />
       <div class="flex flex-col gap-3">
         <p class="text-medium-grey dark:text-white text-xs font-bold">Board Columns</p>
         <div class="flex items-center justify-between gap-4" v-for="(column, index) in board.columns" :key="index">
-          <BaseInput v-model="column.name"
+          <BaseInput :ref="el => { inputs[index] = el }" v-model="column.name"
             :placeholder="columnsPlaceholders[index] ? columnsPlaceholders[index] : 'Your Column title...'" />
           <IconCross @click="deleteColumn(index)" class="cursor-pointer" />
         </div>
-        <ButtonSecondaryLarge @click="addColumn">+ Add New Column</ButtonSecondaryLarge>
+        <ButtonSecondaryLarge @click.stop="addColumn">+ Add New Column</ButtonSecondaryLarge>
       </div>
-      <ButtonPrimaryLarge @click.prevent="onSubmit">
+      <ButtonPrimaryLarge type="submit">
         {{ managerStore.boardForm.edit ? 'Save Changes' : 'Create New Board' }}
       </ButtonPrimaryLarge>
     </div>
-  </div>
+  </form>
 </template>
 <script setup>
-import { ref } from 'vue';
+import { ref, reactive, onBeforeUpdate } from 'vue'
 import { useBoardsStore } from '@/stores/boards.js';
 import { useManagerStore } from '@/stores/manager.js';
 import BaseInput from '@/components/form/BaseInput.vue';
@@ -34,7 +34,10 @@ import ButtonSecondaryLarge from '@/components/buttons/SecondaryLarge.vue';
 const boardsStore = useBoardsStore();
 const managerStore = useManagerStore();
 
-const board = ref({
+const inputTitle = ref(null)
+const inputs = ref([])
+
+const board = reactive({
   name: '',
   columns: []
 })
@@ -44,27 +47,49 @@ const columnsPlaceholders = {
   2: 'e.g. Done...'
 }
 const deleteColumn = (index) => {
-  {
-    board.value.columns.splice(index, 1)
+  if (board.columns.length === 2) {
+    board.columns[index].name = ''
+    board.columns[index].tasks = [{ name: '', tasks: [] }]
+  } else {
+    board.columns.splice(index, 1)
   }
 }
 const addColumn = () => {
-  board.value.columns.push({ name: '', tasks: [] })
+  board.columns.push({ name: '', tasks: [] })
 }
 const onSubmit = () => {
-  if (managerStore.boardForm.edit) {
-    boardsStore.boards[boardsStore.selectedBoard] = board.value
-  } else {
-    boardsStore.boards.push(board.value)
+  if (validate()) {
+    if (managerStore.boardForm.edit) {
+      boardsStore.boards[boardsStore.selectedBoard] = board
+    } else {
+      boardsStore.boards.push(board)
+      boardsStore.selectedBoard = boardsStore.boards.length - 1
+    }
+    managerStore.hideOverlay()
   }
-  managerStore.hideOverlay()
 }
-
+const validate = () => {
+  let valid = true
+  if (board.name.trim().length === 0) {
+    valid = false
+    inputTitle.value.error = true
+  }
+  inputs.value.forEach((e, index) => {
+    if (board?.columns[index]?.name.trim().length === 0) {
+      valid = false
+      e.error = true
+    }
+  })
+  return valid
+}
 //EDIT MODE
 if (managerStore.boardForm.edit) {
-  board.value.name = JSON.parse(JSON.stringify(boardsStore.boards[boardsStore.selectedBoard].name))
-  board.value.columns = JSON.parse(JSON.stringify(boardsStore.getCurrentBoard.columns))
+  board.name = JSON.parse(JSON.stringify(boardsStore.boards[boardsStore.selectedBoard].name))
+  board.columns = JSON.parse(JSON.stringify(boardsStore.getCurrentBoard.columns))
 } else {
-  board.value.columns = [{ name: '', tasks: [] }, { name: '', tasks: [] }]
+  board.columns = [{ name: '', tasks: [] }, { name: '', tasks: [] }]
 }
+onBeforeUpdate(() => {
+  inputs.value = []
+})
 </script>
