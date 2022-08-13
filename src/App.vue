@@ -8,7 +8,7 @@
         :class="managerStore.sidebar ? ['sm:translate-x-[256px] lg:translate-x-[300px] max-w-[calc(100vw+256px'] : ['translate-x-[0]']">
         <div data-dragscroll class="mx-auto w-11/12 pt-6 pb-24 ">
           <Board data-dragscroll v-if="boardsStore.getColumns" />
-          <div v-else-if="!boardsStore.boards"></div>
+          <NoBoards v-else-if="boardsStore.boards.length === 0" />
           <EmptyBoard v-else />
         </div>
       </div>
@@ -41,6 +41,7 @@ import ShowSidebar from './components/manager/sidebar/ShowSidebar.vue';
 import { onMounted } from 'vue';
 import { useBoardsStore } from '@/stores/boards.js';
 import { useManagerStore } from '@/stores/manager.js';
+import NoBoards from './components/board/NoBoards.vue';
 
 const boardsStore = useBoardsStore();
 const managerStore = useManagerStore();

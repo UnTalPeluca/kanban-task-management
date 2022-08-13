@@ -33,9 +33,7 @@ body {
   scrollbar-width: auto;
   scrollbar-color: #635fc7 #ffffff;
 }
-*:not(svg):not(path):not(g) {
-  transition: all 250ms ease;
-}
+
 
 /* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
