@@ -19,7 +19,7 @@
       <h1 class="text-black dark:text-white font-bold text-lg cursor-pointer hidden sm:block">
         {{ boardsStore.getCurrentBoard?.name }}
       </h1>
-      <div class="flex items-center gap-4 ml-auto">
+      <div v-if="boardsStore.boards.length" class="flex items-center gap-4 ml-auto">
         <AddButtonMobile />
         <PrimarySmall @click="addTask" class="hidden sm:block">+ Add New Task</PrimarySmall>
         <Dropdown target="Board" @onClickEdit="editTask" @onClickDelete="deleteTask" />
