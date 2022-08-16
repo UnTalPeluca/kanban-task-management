@@ -1,6 +1,6 @@
 <template>
   <header class="bg-white dark:bg-dark-grey top-0 left-0 w-full flex items-center sm:pr-4">
-    <div class="hidden items-center sm:flex pl-6 h-20 border-r border-r-lines-light dark:border-r-lines-dark"
+    <div class="hidden items-center sm:flex pl-6 h-20 border-r border-r-lines-light dark:border-r-lines-dark md:h-24"
       :class="managerStore.sidebar ? ['min-w-[256px]', 'lg:min-w-[300px]'] : ['min-w-[200px]']">
       <img class="hidden dark:block" src="@/assets/icons/logo-light.svg" alt="logo">
       <img class="dark:hidden" src="@/assets/icons/logo-dark.svg" alt="logo">
@@ -16,7 +16,7 @@
         <IconArrowDown v-if="!managerStore.sidebarMobile" />
         <IconArrowUp v-else />
       </div>
-      <h1 class="text-black dark:text-white font-bold text-lg cursor-pointer hidden sm:block">
+      <h1 class="text-black dark:text-white font-bold hidden text-2xl sm:block">
         {{ boardsStore.getCurrentBoard?.name }}
       </h1>
       <div v-if="boardsStore.boards.length" class="flex items-center gap-4 ml-auto">
