@@ -62,21 +62,21 @@ onMounted(async () => {
   }
 
   //DARK MODE
-  // if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+  if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
     document.documentElement.classList.add('dark')
-  //   localStorage.setItem('theme', 'dark')
-  //   managerStore.darkmode = true;
-  // } else {
-  //   localStorage.setItem('theme', 'light')
-  //   managerStore.darkmode = false;
-  // }
-  // managerStore.$subscribe((mutations, state) => {
-  //   localStorage.setItem('theme', (state.darkmode ? 'dark' : 'light'))
-  //   if (state.darkmode) {
-  //     document.documentElement.classList.add('dark')
-  //   } else {
-  //     document.documentElement.classList.remove('dark')
-  //   }
-  // })
+    localStorage.setItem('theme', 'dark')
+    managerStore.darkmode = true;
+  } else {
+    localStorage.setItem('theme', 'light')
+    managerStore.darkmode = false;
+  }
+  managerStore.$subscribe((mutations, state) => {
+    localStorage.setItem('theme', (state.darkmode ? 'dark' : 'light'))
+    if (state.darkmode) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  })
 }) 
 </script>
