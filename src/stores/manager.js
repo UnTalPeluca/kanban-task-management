@@ -16,7 +16,7 @@ export const useManagerStore = defineStore({
       visible: false,
       board: false,
     },
-    sidebar: false,
+    sidebar: true,
     sidebarMobile: false,
     overlay: false,
     dragging: false,
