@@ -1,29 +1,44 @@
-# kanban-task-management
+## Table of contents
 
-This template should help get you started developing with Vue 3 in Vite.
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+- [Author](#author)
 
-## Recommended IDE Setup
+## Overview
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+### The challenge
 
-## Customize configuration
+Users should be able to:
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+- View the optimal layout for the app depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Create, read, update, and delete boards and tasks
+- Receive form validations when trying to create/edit boards and tasks
+- Mark subtasks as complete and move tasks between columns
+- Hide/show the board sidebar
+- Toggle the theme between light/dark modes
+- Keep track of any changes, even after refreshing the browser
+### Screenshot
 
-## Project Setup
+![](./screenshot.jpg)
 
-```sh
-npm install
-```
+### Links
 
-### Compile and Hot-Reload for Development
+- Solution URL: [FrontendMentor](https://www.frontendmentor.io/solutions/kanban-task-management-with-vue-and-tailwind-kNMCbZs_ea)
+- Live Site URL: [Netlify](https://kanban-task-management.netlify.app)
 
-```sh
-npm run dev
-```
+## My process
 
-### Compile and Minify for Production
+### Built with
 
-```sh
-npm run build
-```
+- Vue 3
+- Tailwind
+
+## Author
+
+- Frontend Mentor - [@UnTalPeluca](https://www.frontendmentor.io/profile/yourusername)
+- Github - [@UnTalPeluca](https://github.com/UnTalPeluca)
