@@ -19,8 +19,8 @@ export const useManagerStore = defineStore({
     sidebar: true,
     sidebarMobile: false,
     overlay: false,
-    dragging: false,
     darkmode: false,
+    dragging: false,
   }),
   getters: {},
   actions: {

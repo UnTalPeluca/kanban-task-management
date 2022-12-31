@@ -9,7 +9,7 @@
         <div data-dragscroll class="mx-auto w-11/12 pt-6 pb-24 ">
           <div data-dragscroll v-if="boardsStore.getColumns" class="flex">
             <Board data-dragscroll />
-            <AddNewColumn class="hidden md:flex"/>
+            <AddNewColumn class="hidden md:flex" />
           </div>
           <NoBoards v-else-if="boardsStore.boards.length === 0" />
           <EmptyBoard v-else />
@@ -49,9 +49,15 @@ import AddNewColumn from './components/board/AddNewColumn.vue';
 
 const boardsStore = useBoardsStore();
 const managerStore = useManagerStore();
+
 onMounted(async () => {
+  //INIT STORAGE
   boardsStore.$subscribe((mutations, state) => {
-    localStorage.setItem('data', JSON.stringify(state))
+    if (!managerStore.dragging) {
+      localStorage.setItem('data', JSON.stringify(state))
+    } else {
+      console.log("No está guardando")
+    }
   })
   const storageData = localStorage.getItem("data")
   if (storageData === null) {
