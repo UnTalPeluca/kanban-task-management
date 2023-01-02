@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "pinia": "^2.0.16",
+    "uuid": "^9.0.0",
     "vue": "^3.2.37",
     "vue-dragscroll": "^4.0.3"
   },

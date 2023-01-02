@@ -7,7 +7,6 @@ export const useBoardsStore = defineStore({
     selectedBoard: 0,
     selectedColumn: 0,
     selectedTask: 0,
-    draggedTask: 0,
   }),
   getters: {
     getColumns: (state) => state.boards[state.selectedBoard]?.columns,
