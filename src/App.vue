@@ -54,12 +54,12 @@ onMounted(async () => {
   //INIT STORAGE
   boardsStore.$subscribe((mutations, state) => {
     if (!managerStore.dragging) {
-      localStorage.setItem('data', JSON.stringify(state))
+      localStorage.setItem('boards', JSON.stringify(state))
     } else {
       console.log("No está guardando")
     }
   })
-  const storageData = localStorage.getItem("data")
+  const storageData = localStorage.getItem("boards")
   if (storageData === null) {
     const jsonData = await import("./assets/json/data.json")
     boardsStore.boards = jsonData.boards;

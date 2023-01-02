@@ -39,6 +39,7 @@ import BaseTextarea from '../form/BaseTextarea.vue';
 import IconCross from '../icons/IconCross.vue';
 import ButtonPrimaryLarge from '../buttons/PrimaryLarge.vue';
 import ButtonSecondaryLarge from '../buttons/SecondaryLarge.vue';
+import { uuid as uuidv4 } from 'uuid';
 const boardsStore = useBoardsStore();
 const managerStore = useManagerStore();
 const columnName = ref('')
@@ -74,7 +75,7 @@ const onSubmit = () => {
     if (managerStore.taskForm.edit) {
       boardsStore.saveTaskChanges({ task: form.task, column: form.column })
     } else {
-      boardsStore.getColumns[form.column].tasks.push(form.task)
+      boardsStore.getColumns[form.column].tasks.push({...form.task, id: uuid()})
     }
     managerStore.hideOverlay()
   }
