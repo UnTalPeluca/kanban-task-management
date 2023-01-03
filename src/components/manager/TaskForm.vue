@@ -39,7 +39,7 @@ import BaseTextarea from '../form/BaseTextarea.vue';
 import IconCross from '../icons/IconCross.vue';
 import ButtonPrimaryLarge from '../buttons/PrimaryLarge.vue';
 import ButtonSecondaryLarge from '../buttons/SecondaryLarge.vue';
-import { uuid as uuidv4 } from 'uuid';
+import { v4 as uuid } from 'uuid';
 const boardsStore = useBoardsStore();
 const managerStore = useManagerStore();
 const columnName = ref('')
