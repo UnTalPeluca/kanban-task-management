@@ -40,17 +40,16 @@ const onDragTask = (evt, task, columnIndex, taskIndex) => {
     columnIndex,
     taskIndex
   }
+  boardsStore.getCurrentBoard.columns[columnIndex].tasks.splice(taskIndex, 1)
   evt.dataTransfer.dropEffect = 'move'
   evt.dataTransfer.effectAllowed = 'move'
 }
 const onDragEnterColumn = (columnIndex) => {
-  if (columnIndex !== draggedTask.value.columnIndex) {
-    removeTempTask()
-    boardsStore.boards[boardsStore.selectedBoard].columns[columnIndex].tasks.push(draggedTask.value.task)
-    tempTask.value = {
-      columnIndex,
-      taskIndex: boardsStore.boards[boardsStore.selectedBoard].columns[columnIndex].tasks.length - 1
-    }
+  removeTempTask()
+  boardsStore.boards[boardsStore.selectedBoard].columns[columnIndex].tasks.push(draggedTask.value.task)
+  tempTask.value = {
+    columnIndex,
+    taskIndex: boardsStore.boards[boardsStore.selectedBoard].columns[columnIndex].tasks.length - 1
   }
 }
 const onDragEnterTask = (evt, task, columnIndex, taskIndex) => {
@@ -61,8 +60,6 @@ const onDragEnterTask = (evt, task, columnIndex, taskIndex) => {
       columnIndex,
       taskIndex
     }
-  } else {
-
   }
 }
 const onDragLeaveTask = (evt) => {
@@ -73,11 +70,6 @@ const onDragEnd = (evt) => {
     managerStore.dragging = false
     const sameColumn = draggedTask.value?.columnIndex === tempTask.value?.columnIndex
     const isAbove = draggedTask.value?.taskIndex > tempTask.value?.taskIndex
-    if (sameColumn && isAbove) {
-      boardsStore.boards[boardsStore.selectedBoard].columns[draggedTask.value.columnIndex].tasks.splice(draggedTask.value.taskIndex + 1, 1)
-    } else {
-      boardsStore.boards[boardsStore.selectedBoard].columns[draggedTask.value.columnIndex].tasks.splice(draggedTask.value.taskIndex, 1)
-    }
   }
   draggedTask.value = null
   tempTask.value = null

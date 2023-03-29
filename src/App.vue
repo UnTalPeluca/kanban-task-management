@@ -55,8 +55,6 @@ onMounted(async () => {
   boardsStore.$subscribe((mutations, state) => {
     if (!managerStore.dragging) {
       localStorage.setItem('boards', JSON.stringify(state))
-    } else {
-      console.log("No está guardando")
     }
   })
   const storageData = localStorage.getItem("boards")
