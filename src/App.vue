@@ -53,9 +53,10 @@ const managerStore = useManagerStore();
 onMounted(async () => {
   //INIT STORAGE
   boardsStore.$subscribe((mutations, state) => {
-    if (!managerStore.dragging) {
-      localStorage.setItem('boards', JSON.stringify(state))
-    }
+
+    localStorage.setItem('boards', JSON.stringify(state))
+    console.log("eaea")
+
   })
   const storageData = localStorage.getItem("boards")
   if (storageData === null) {

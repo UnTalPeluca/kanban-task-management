@@ -17,7 +17,7 @@
             :class="[(tempTask?.taskIndex === taskIndex) && (tempTask?.columnIndex === columnIndex) ? tempTaskStyle : '', (draggedTask?.task?.id === task.id) ? 'opacity-50' : '']" />
         </div>
       </TransitionGroup>
-      <div @dragenter="onDragEnterColumn(columnIndex)" class="h-full mt-5" />
+      <div @dragenter="onDragEnterColumn(columnIndex)"  class="h-full mt-5" />
     </section>
   </div>
 </template>
@@ -52,6 +52,9 @@ const onDragEnterColumn = (columnIndex) => {
     taskIndex: boardsStore.boards[boardsStore.selectedBoard].columns[columnIndex].tasks.length - 1
   }
 }
+const test = () => {
+  console.log("test")
+}
 const onDragEnterTask = (evt, task, columnIndex, taskIndex) => {
   if (draggedTask.value.task.id !== task.id) {
     removeTempTask()
@@ -67,12 +70,15 @@ const onDragLeaveTask = (evt) => {
 }
 const onDragEnd = (evt) => {
   if (tempTask.value) {
-    managerStore.dragging = false
     const sameColumn = draggedTask.value?.columnIndex === tempTask.value?.columnIndex
     const isAbove = draggedTask.value?.taskIndex > tempTask.value?.taskIndex
+  } else {
+    boardsStore.getCurrentBoard.columns[draggedTask.value.columnIndex].tasks.splice(draggedTask.value.taskIndex, 0, draggedTask.value.task)
   }
+  managerStore.dragging = false
   draggedTask.value = null
   tempTask.value = null
+  boardsStore.boards = boardsStore.boards
 }
 const removeTempTask = () => {
   if (tempTask.value) {
