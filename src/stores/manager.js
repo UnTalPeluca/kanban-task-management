@@ -30,8 +30,10 @@ export const useManagerStore = defineStore({
       this.taskForm.visible = false;
       this.boardForm.visible = false;
       this.delete.visible = false;
+      if(this.sidebarMobile) {
+        this.sidebar = false;
+      }
       this.sidebarMobile = false;
-      this.sidebar = false;
     },
   },
 });
