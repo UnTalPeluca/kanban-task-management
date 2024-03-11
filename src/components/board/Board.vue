@@ -3,7 +3,7 @@
     <section data-dragscroll v-for="(column, columnIndex) in boardsStore.getColumns" :key="columnIndex"
       class="min-w-[280px] box-content flex flex-col" @dragover.prevent>
       <div class="flex items-center gap-3 pb-6 ">
-        <div class="rounded-full h-4 w-4" :style="{ backgroundColor: bulletColors(columnIndex) }"></div>
+        <div class="rounded-full h-4 w-4" :style="{ backgroundColor: column.color }"></div>
         <h2 class="text-medium-grey font-bold text-xs uppercase">
           {{ column.name }} ( {{ column.tasks.length }} )
         </h2>
@@ -92,21 +92,6 @@ const onClickTask = (column, task) => {
   boardsStore.selectedTask = task;
   managerStore.taskView = true;
   managerStore.overlay = true;
-}
-const bulletColors = (index) => {
-  const color = [
-    '#49C4E5',
-    '#8471F2',
-    '#67E2AE'
-  ]
-  if (color[index]) {
-    return color[index]
-  } else {
-    let rand = Math.random();
-    rand = Math.floor(rand * 360) + 1;
-    const randomColor = `hsl(${rand}, 80%, 70%)`
-    return randomColor
-  }
 }
 
 </script>

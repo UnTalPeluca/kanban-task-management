@@ -55,7 +55,9 @@ const deleteColumn = (index) => {
   }
 }
 const addColumn = () => {
-  board.columns.push({ name: '', tasks: [] })
+  const random = Math.floor(Math.random() * 360) + 1;
+  const newColumnColor = `hsl(${random}, 80%, 70%)`
+  board.columns.push({ name: '', color: newColumnColor, tasks: [] })
 }
 const onSubmit = () => {
   if (validate()) {

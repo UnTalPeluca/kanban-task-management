@@ -5,6 +5,7 @@
       "columns": [
         {
           "name": "Todo",
+          "color": "#49C4E5",
           "tasks": [
             {
               "id": "4a934216-0b96-475d-8284-d027e8657df3",
@@ -74,6 +75,7 @@
         },
         {
           "name": "Doing",
+          "color": "#8471F2",
           "tasks": [
             {
               "id": "69eb5ce8-4720-441e-b7b4-0c1d8a59143d",
@@ -191,6 +193,7 @@
         },
         {
           "name": "Done",
+          "color": "#67E2AE",
           "tasks": [
             {
               "id": "c1af8e06-e7e8-49c7-9851-f7ea1fdb73b9",
@@ -305,6 +308,7 @@
       "columns": [
         {
           "name": "Todo",
+          "color": "#49C4E5",
           "tasks": [
             {
               "id": "2dbea4db-61c2-44bd-930c-d00e9f43e3fe",
@@ -386,10 +390,12 @@
         },
         {
           "name": "Doing",
+          "color": "#8471F2",
           "tasks": []
         },
         {
           "name": "Done",
+          "color": "#67E2AE",
           "tasks": []
         }
       ]
@@ -399,6 +405,7 @@
       "columns": [
         {
           "name": "Now",
+          "color": "#49C4E5",
           "tasks": [
             {
               "id": "ac713791-b937-440a-8caf-0b178fc45720",
@@ -440,10 +447,12 @@
         },
         {
           "name": "Next",
+          "color": "#8471F2",
           "tasks": []
         },
         {
           "name": "Later",
+          "color": "#67E2AE",
           "tasks": []
         }
       ]
