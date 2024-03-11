@@ -1,8 +1,11 @@
 <template>
-  <div class="flex items-center min-h-full pt-11">
-    <div @click="addNewColumn"
-      class="h-full flex items-center min-w-[280px] cursor-pointer bg-gradient-to-b from-[#E9EFFA] to-[#E9EFFA]/50 dark:from-dark-grey dark:to-dark-grey/25 rounded-md text-medium-grey hover:text-main-purple ">
-      <p class="text-2xl text-center w-full font-bold select-none">+ New Column</p>
+  <div class="min-w-[280px] min-h-full relative ">
+    <div
+      class="h-[calc(100vh-142px)] pr-6 sticky top-0 left-0 text-2xl font-bold select-none flex justify-center items-center pt-11">
+      <button @click="addNewColumn" class="w-full h-full bg-gradient-to-b from-[#E9EFFA] to-[#E9EFFA]/50 dark:from-dark-grey dark:to-dark-grey/25 rounded-md 
+        text-medium-grey hover:text-main-purple cursor-pointer">
+        + New Column
+      </button>
     </div>
   </div>
 </template>

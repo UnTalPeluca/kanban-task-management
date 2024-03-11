@@ -4,13 +4,10 @@
     <div class="flex w-full ">
       <SideBar />
       <div v-dragscroll:nochilddrag
-        class="relative h-full w-screen min-h-[calc(100vh-64px)] max-h-[calc(100vh-64px)] overflow-auto bg-light-grey dark:bg-very-dark-grey transition-all "
-        :class="managerStore.sidebar ? ['sm:translate-x-[256px] lg:translate-x-[300px] max-w-[calc(100vw+256px'] : ['translate-x-[0]']">
-        <div data-dragscroll class="mx-auto w-11/12 pt-6 pb-24 ">
-          <div data-dragscroll v-if="boardsStore.getColumns" class="flex">
-            <Board data-dragscroll />
-            <AddNewColumn class="hidden md:flex" />
-          </div>
+        class="relative h-full w-screen max-h-[calc(100vh-64px)] bg-light-grey dark:bg-very-dark-grey"
+        :class="managerStore.sidebar ? 'sm:pl-[256px] lg:pl-[300px]' : ''">
+        <div data-dragscroll class="p-6 w-full overflow-auto max-h-[calc(100vh-64px)] transition-all">
+          <Board data-dragscroll v-if="boardsStore.getColumns" />
           <NoBoards v-else-if="boardsStore.boards.length === 0" />
           <EmptyBoard v-else />
         </div>
@@ -26,8 +23,8 @@
     <BoardForm v-if="managerStore.boardForm.visible" />
     <SidebarMobile v-if="managerStore.sidebarMobile" />
   </div>
-</template >
-  
+</template>
+
 <script setup>
 import EmptyBoard from './components/board/Empty.vue';
 import Board from './components/board/Board.vue'
@@ -45,7 +42,6 @@ import { onMounted } from 'vue';
 import { useBoardsStore } from '@/stores/boards.js';
 import { useManagerStore } from '@/stores/manager.js';
 import NoBoards from './components/board/NoBoards.vue';
-import AddNewColumn from './components/board/AddNewColumn.vue';
 
 const boardsStore = useBoardsStore();
 const managerStore = useManagerStore();
@@ -55,7 +51,6 @@ onMounted(async () => {
   boardsStore.$subscribe((mutations, state) => {
 
     localStorage.setItem('boards', JSON.stringify(state))
-    console.log("eaea")
 
   })
   const storageData = localStorage.getItem("boards")

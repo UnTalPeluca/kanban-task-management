@@ -1,7 +1,7 @@
 <template>
   <div class="flex gap-6 ">
     <section data-dragscroll v-for="(column, columnIndex) in boardsStore.getColumns" :key="columnIndex"
-      class="min-w-[280px] last:pr-6 box-content flex flex-col" @dragover.prevent>
+      class="min-w-[280px] box-content flex flex-col" @dragover.prevent>
       <div class="flex items-center gap-3 pb-6 ">
         <div class="rounded-full h-4 w-4" :style="{ backgroundColor: bulletColors(columnIndex) }"></div>
         <h2 class="text-medium-grey font-bold text-xs uppercase">
@@ -17,12 +17,14 @@
             :class="[(tempTask?.taskIndex === taskIndex) && (tempTask?.columnIndex === columnIndex) ? tempTaskStyle : '', (draggedTask?.task?.id === task.id) ? 'opacity-50' : '']" />
         </div>
       </TransitionGroup>
-      <div @dragenter="onDragEnterColumn(columnIndex)"  class="h-full mt-5" />
+      <div @dragenter="onDragEnterColumn(columnIndex)" class="h-full mt-5" />
     </section>
+    <AddNewColumn />
   </div>
 </template>
 <script setup>
 import BoardTask from "@/components/board/Task.vue";
+import AddNewColumn from '@/components/board/AddNewColumn.vue';
 import { useBoardsStore } from '@/stores/boards.js';
 import { useManagerStore } from '@/stores/manager';
 import { ref } from "vue";
@@ -52,9 +54,7 @@ const onDragEnterColumn = (columnIndex) => {
     taskIndex: boardsStore.boards[boardsStore.selectedBoard].columns[columnIndex].tasks.length - 1
   }
 }
-const test = () => {
-  console.log("test")
-}
+
 const onDragEnterTask = (evt, task, columnIndex, taskIndex) => {
   if (draggedTask.value.task.id !== task.id) {
     removeTempTask()
